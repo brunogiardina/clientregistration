@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register & Schedule Clients</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+</head>
+<body page=''>
+    
+    <main  class="container">
+
+        <section class="btn-main-menu">
+
+            <button id="btn-client-list" class="standard-btn btn-client-list">Client List</button>
+
+            
+
+            <button class="standard-btn btn-new-schedule" id="btn-new-schedule">New Schedule</button>
+
+        </section>
+
+        <section class="register standard-modal" id="register">
+            <div class="register-content">
+                <h2 class="sub-h2">Client's Registration</h2>
+                <form class="add-clients standard-form">
+                    <div class="id-client divs-inputs">
+                        <input type="hidden" class="id-client" name="id-client" id="id-client">
+                    </div>
+                    <div class="name divs-inputs">
+                        <input type="text" class="name input-register" name="name" id="name" data-index="new" required placeholder="Name">
+                    </div>
+                    <div class="address divs-inputs">
+                        <input type="text" class="address  input-register" name="address" id="address" required placeholder="Address/Eircode">
+                    </div>
+                    <div class="tel divs-inputs">
+                        <input type="tel" class="tel  input-register" name="tel" id="tel" required placeholder="Phone Number">
+                    </div>
+                    <div class="btn">
+                        <button  class="standard-btn btn-submit-add">Add</button>
+                        <button id="modalCloseRegister" type="reset" class="standard-btn btn-close-modal">Close</button>
+                    </div>
+                    
+                </form>
+            </div>          
+        </section>
+
+        <section class="schedule-clients standard-modal" id="schedule-clients">
+            <div class="schedule-content">
+                <h2 class="sub-h2">Client's Schedule</h2>
+                <form class="standard-form add-schedule" id="schedule-form" action="">
+                    <div class="select-client-schedule">
+                        <select name="client-name" id="client-name-schedule" class="input-schedule select2" required onChange="settingDataSchedule()">
+                            <option value="">-- Select Name --</option>
+                        </select>
+                    </div>
+                    <div class="search-client-schedule">
+                        <input type="text" id="name-client-schedule" class="input-schedule" name="name-client-schedule" placeholder="Client Name" readonly="readonly" data-index="new">
+
+                        <input type="text" class="address-schedule input-schedule" name="address-schedule" id="address-schedule" placeholder="Address/Eircode" readonly="readonly">
+
+                        <input type="tel" class="tel-schedule input-schedule" name="tel-schedule" id="tel-schedule" placeholder="Phone Number" readonly="readonly">
+                        
+                        <div class="date-schedule ">
+                            <input id="date-schedule" type="date" placeholder="Date" class="input-schedule input-to-be-filled" required>
+                        </div>
+                        <div class="time-schedule">
+                            <input id="time-schedule" type="time" placeholder="Time" class="input-schedule input-to-be-filled" required>
+                        </div>
+
+                        <div class="btn">
+                            <button type="submit" class="standard-btn  btn-submit-search btn-new-schedule'">Schedule</button>
+                            <button id="modalCloseSchedule" class="standard-btn btn-close-modal">Close</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </section>
+
+        <section class="scheduled-clients" id="scheduled-clients">
+            <h2 class="main-h2">Clients Scheduled</h2>
+            <table id="table-schedule">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Telephone</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="schedule-list-tbody"></tbody>
+            </table>
+        </section>
+        
+        <section class="clients-list standard-modal" id="clients-list">
+            <div class="container-client-list">
+                <div class="container-client-list-btns">
+                    <button id="btn-new-register" class="standard-btn btn-new-register"><i class='bx bxs-plus-square'></i></button>
+                    
+                    <button id="btn-close-client-list" class="btn-close-client-list"><i class='bx bx-window-close'></i></button>
+                </div>
+
+                <div class="container-client-list-table">
+                    <h2 class="main-h2">Clients List</h2>    
+                    <table id="table-client" class="table-client-content">
+                        
+                        <thead>
+                            <tr>
+                                <th class="client-index">Id</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Telephone</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="client-list-tbody"></tbody>
+                    </table>
+                </div>
+                
+            </div>
+            
+        </section>
+        
+    </main>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2();
+        });
+    </script>
+
+    <script src="main.js"></script>
+</body>
+</html>
